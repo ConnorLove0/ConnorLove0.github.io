@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+      <meta charset="utf-8">
+      <title>Register</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<style>
+      * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+            font-size: 16px;
+      }
+
+      body {
+            background-color: #435165;
+            margin: 0;
+      }
+
+      .register {
+            width: 400px;
+            background-color: #ffffff;
+            box-shadow: 0 0 9px 0 #f56600;
+            margin: 100px auto;
+      }
+
+      .register h1 {
+            text-align: center;
+            color: #f56600;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #dee0e4;
+      }
+
+      .register form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+      }
+
+      .register form label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: #522d80;
+            color: #ffffff;
+      }
+
+      .register form input[type="password"],
+      .register form input[type="text"],
+      .register form input[type="email"] {
+            width: 310px;
+            height: 50px;
+            border: 1px solid #dee0e4;
+            margin-bottom: 20px;
+            padding: 0 15px;
+      }
+
+      .register form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #522d80;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #f56600;
+            transition: background-color 0.2s;
+      }
+
+      .register form input[type="submit"]:hover {
+            background-color: #f56600;
+            color: #522d80;
+            transition: background-color 0.2s;
+      }
+</style>
+
+<body>
+      <div class="register">
+            <h1>Register</h1>
+            <form action="/phplogin/420710/PHP/register.php" method="post" autocomplete="off">
+                  <label for="username">
+                        <i class="fas fa-user"></i>
+                  </label>
+                  <input type="text" name="username" placeholder="Username" id="username" required>
+                  <label for="password">
+                        <i class="fas fa-lock"></i>
+                  </label>
+                  <input type="password" name="password" placeholder="Password" id="password" required>
+                  <label for="email">
+                        <i class="fas fa-envelope"></i>
+                  </label>
+                  <input type="email" name="email" placeholder="Email" id="email" required>
+                  <input type="submit" value="Register">
+            </form>
+      </div>
+</body>
+
+</html>

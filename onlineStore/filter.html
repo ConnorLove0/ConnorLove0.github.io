@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter Gallery</title>
+  <style>
+    /* Hide the filter container by default */
+    #filter-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 250px;
+      background-color: #f2f2f2;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 9999;
+    }
+
+    /* Show the filter container when it's active */
+    #filter-container.active {
+      left: 0;
+    }
+
+    /* Add styles to the filter button */
+    #see-filter-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10000;
+    }
+
+    /* Add some spacing to the gallery */
+    .js-adv-filter__gallery {
+      margin-left: 300px;
+      /* Adjust the value according to your needs */
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="search-products" placeholder="Search products">
+
+  <input type="number" id="priceMinValue" placeholder="Min Price">
+  <input type="number" id="priceMaxValue" placeholder="Max Price">
+
+  <input type="number" id="indexValue" placeholder="Index Value">
+
+  <ul class="js-adv-filter__gallery">
+    <!-- Replace this section with your actual gallery items -->
+    <li class="js-adv-filter__item" data-multi-select-text="{n} filters selected" data-default-text="All">
+      <span class="js-adv-filter__selection">All</span>
+    </li>
+  </ul>
+
+  <script src="filter.js"></script>
+</body>
+
+</html>
