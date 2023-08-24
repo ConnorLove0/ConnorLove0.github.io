@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #522D80;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  padding: 10px;
+  background-color: #F56600;
+}
+
+footer {
+  position: relative;
+  float: left;
+  width: 100%;
+  color: black;
+  background-color: gray;
+  text-align: center;
+  font-style: italic;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 0;
+}
+
+#left_side {
+  width: 25%;
+  color: white;
+  bottom: 0;
+  background-color: #522D80;
+  border-top: 3px solid white;
+  border-width: 3px;
+  border-style: solid;
+  min-height: 100vh;
+  margin-bottom: 0 px;
+  padding-bottom: 0 px;
+  order: 1;
+}
+
+#content_area {
+  flex-grow: 1;
+  width: 50%;
+  color: black;
+  background-image: url("/420710/Images/cool-background.png");
+  border-right: 3px solid white;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  margin-bottom: 0 px;
+  padding-bottom: 0 px;
+  order: 2;
+}
+
+#content_area p {
+  margin: 0 5px;
+  font-size: 18pt;
+}
+
+#right_side {
+  width: 25%;
+  color: #F56600;
+  bottom: 0;
+  border-top: 3px solid white;
+  background-color: #522D80;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  order: 3;
+  overflow-y: auto;
+}
+
+#right_side p {
+  margin: 0 5px;
+}
+
+h1, h2{
+  margin: 0;
+  color: #522D80;
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+  color: black;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#left_side ul {
+  list-style: none;
+  color: white;
+  margin: 12px 0px 0px 12px;
+  padding: 0px;
+}
+
+#left_side li a:link,
+#left_side li a:visited,
+#right_side li a:link,
+#right_side li a:visited {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: #F56600;
+  text-decoration: none;
+  display: block;
+}
+
+#left_side li a:hover,
+#left_side li a:active,
+#right_side li a:hover,
+#right_side li a:active {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+#Header-Image-Row, .Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+#The-Boys, #appletree, #sushi4 {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+}
+
+#ratings {
+  display: flex;
+  justify-content: center;
+}
+
+#ratings li {
+  justify-content: left;
+}
+
+#content_area li {
+  justify-content: left;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  #wrapper {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  #left_side {
+    width: 25%;
+    order: 1;
+  }
+
+  #content_area {
+    order: 2;
+  }
+
+  #right_side {
+    margin: 0 10px;
+    width: 25%;
+    order: 3;
+  }
+
+  #content_area p {
+    margin: 0 10px;
+    font-size: 16pt;
+  }
+}

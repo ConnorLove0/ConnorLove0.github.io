@@ -1,0 +1,309 @@
+li<!--Connor Love--> 
+<!--7/01/2023--> 
+<!--jQuery Demo--> 
+<!--Senior--> 
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment - jQuery Demo</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href = "https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            // Change background color to yellow when the mouse enters a div
+            $("#div1, #div2, #div3").mouseenter(function () {
+                $(this).css("background-color", "yellow");
+            });
+
+            // Change background color to yellow when the mouse enters a div
+            $("#div1").mouseleave(function () {
+                $(this).css("background-color", "white");
+            });
+
+            $("#div2").mouseleave(function () {
+                $(this).css("background-color", "white");
+            });
+
+            $("#div3").mouseleave(function () {
+                $(this).css("background-color", "white");
+            });
+
+            // Fade away div when button is clicked
+            $("#fade1").click(function () {
+                $("#div1, #fade1").fadeOut();
+            });
+
+            $("#fade2").click(function () {
+                $("#div2, #fade2").fadeOut();
+            });
+
+            $("#fade3").click(function () {
+                $("#div3, #fade3").fadeOut();
+            });
+
+            // Adds jQuery datepicker
+            $("#jQdatepicker").datepicker();
+
+            // Adds jQuery accordian
+            $("#jQaccordion").accordion();
+
+            // Adds JQuery Progress Bar and updates it every second
+            var progressVal = 0;
+            var timer = setInterval(function () {
+                progressVal++;
+                $("#jQprogressbar").progressbar("value", (progressVal / 20) * 100);
+                if (progressVal >= 20) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+            $("#jQprogressbar").progressbar({ value: 0 });
+
+
+            // Find the active category and open it
+            $(".breadcrumbs > ul > li.active > ul").show();
+            $(".breadcrumbs > ul > li.active > a").addClass("ui-accordion-header-active");
+
+            // Highlight the current page
+            var currentPage = window.location.pathname;
+            $(".breadcrumbs a[href='" + currentPage + "']").addClass("current-page");
+
+            // Initialize the accordion widget
+            $(".breadcrumbs").accordion({
+                collapsible: true,
+                active: false,
+                heightStyle: "content"
+            });
+
+            window.addEventListener('scroll', function() {
+                var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                var documentHeight = Math.max(
+                  document.body.scrollHeight,
+                  document.body.offsetHeight,
+                  document.documentElement.clientHeight,
+                  document.documentElement.scrollHeight,
+                  document.documentElement.offsetHeight
+                );
+                var windowHeight = window.innerHeight;
+                var footer = document.getElementById("footer");
+                var footerHeight = footer.offsetHeight;
+              
+                // Calculate the scroll position to show the footer
+                var scrollToShowFooter = documentHeight - windowHeight - footerHeight;
+              
+                // Toggle the visibility of the footer based on scroll position
+                if (scrollPosition >= scrollToShowFooter) {
+                  footer.style.display = 'block';
+                } else {
+                  footer.style.display = 'none';
+                }
+              });
+        });
+    </script>
+
+    <style>
+        .content_area {
+            background-image: url("/420710/Images/cool-background.png");
+        }
+
+        body {
+            background-image: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="/JS/loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <nav>
+            <div class="content_area">
+                <h1>Welcome to My Homepage</h1>
+
+                <p>This is a paragraph.</p>
+
+                <div id="div1" style="border: 1px solid black;">
+                    <p>A paragraph in a div.</p>
+                    <p>Another paragraph in a div.</p>
+                </div>
+                <br>
+
+                <div id="div2" style="border: 1px solid black;">
+                    <p>A paragraph in another div.</p>
+                    <p>Another paragraph in another div.</p>
+                </div>
+                <br>
+
+                <div id="div3" style="border: 1px solid black;">
+                    <p>A paragraph in another div.</p>
+                    <p>Another paragraph in another div.</p>
+                </div>
+
+                <hr>
+
+                <!-- Fade Buttons -->
+                <button id="fade1">Fade div1</button>
+                <button id="fade2">Fade div2</button>
+                <button id="fade3">Fade div3</button>
+
+                <hr>
+
+                <!--jQ DatePicker -->
+                <input type="text" id="jQdatepicker">
+
+                <hr>
+
+                <!-- jQ accordion -->
+                <div id="jQaccordion">
+                    <h3>Part 1</h3>
+                    <div>
+                        <p>Content of Part 1 goes here.</p>
+                    </div>
+                    <h3>Part 2</h3>
+                    <div>
+                        <p>Content of Part 2 goes here.</p>
+                    </div>
+                    <h3>Part 3</h3>
+                    <div>
+                        <p>Content of Part 3 goes here.</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- jQ progressbar -->
+                <div id="jQprogressbar"></div>
+            </div>
+
+            <div class="left_side">
+                <!--
+                    <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <br><h1><strong>*Under Construction*</strong></h1>
+                    <hr>
+                    <div class="breadcrumbs">
+                        <li><a href="/420710/index.html">Home</a></li>
+                        <li>
+                            <a href="#">HTML</a>
+                            <ul>
+                                <li><a href="chapter04.html">Chapter04.html</a></li>
+                                <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                <li><a href="cards.js">cards.js</a></li>
+                                <li><a href="prime.js">prime.js</a></li>
+                                <li><a href="/JS/loops.js">loops.js</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JS</a></li>
+                        <li><a href="#">PHP</a></li>
+                    </div>
+                </div>
+                -->
+                <ul>
+                    <div class="navHead"><h1><strong>Sections</strong></h1><hr>
+                    <li><a href="/420710/index.html">Home</a><br></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li></div>
+                </ul>
+            </div>
+
+            <div class="right_side">
+
+            </div>
+        </nav>
+    </div>
+    <footer><div id = "footer">|Created by calove (7/01/2023)|</div></footer>
+</body>
+
+</html>

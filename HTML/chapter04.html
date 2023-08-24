@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 4: Javascript Events</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            margin-top: 100px;
+            box-sizing: border-box;
+        }
+
+        .button_color {
+            background-color: black;
+            color: white;
+            padding: 5px;
+            border: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .RED {
+            background-color: red;
+        }
+
+        .GREEN {
+            background-color: green;
+        }
+
+        .BLUE {
+            background-color: blue;
+        }
+
+        .button_counters {
+            margin-top: 30px;
+        }
+
+        .count_label {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .count_num {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Link to Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <button id="red_button" class="button_color red">RED</button>
+    <button id="green_button" class="button_color green">GREEN</button>
+    <button id="blue_button" class="button_color blue">BLUE</button>
+
+    <div class="button_counters">
+        <span class="count_label">RED count:</span>
+        <span id="red_count" class="count_num">0</span>
+        <span class="count_label">GREEN count:</span>
+        <span id="green_count" class="count_num">0</span>
+        <span class="count_label">BLUE count:</span>
+        <span id="blue_count" class="count_num">0</span>
+    </div>
+
+    <div class="button_counters">
+        <ul>
+            <span class="count_label">Red Button color change count:</span>
+            <span id="red_color_change_count" class="count_num">0</span><br>
+            <span class="count_label">Green Button color change count:</span>
+            <span id="green_color_change_count" class="count_num">0</span><br>
+            <span class="count_label">Blue Button color change count:</span>
+            <span id="blue_color_change_count" class="count_num">0</span><br>
+            <span class="count_label">Total color change count:</span>
+            <span id="total_color_change_count" class="count_num">0</span><br>
+        </ul>
+    </div>
+
+    <script>
+        const redButton = document.querySelector('#red_button');
+        const greenButton = document.querySelector('#green_button');
+        const blueButton = document.querySelector('#blue_button');
+
+        const redCount = document.querySelector('#red_count');
+        const greenCount = document.querySelector('#green_count');
+        const blueCount = document.querySelector('#blue_count');
+
+        const RedColorChangeCount = document.querySelector('#red_color_change_count')
+        const BlueColorChangeCount = document.querySelector('#blue_color_change_count')
+        const GreenColorChangeCount = document.querySelector('#green_color_change_count')
+        const TotalColorChangeCount = document.querySelector('#total_color_change_count')
+
+
+        let redCounter = 0;
+        let greenCounter = 0;
+        let blueCounter = 0;
+        let RedColorChangeCounter = 0;
+        let BlueColorChangeCounter = 0;
+        let GreenColorChangeCounter = 0;
+        let TotalColorChangeCounter = 0;
+
+        redButton.addEventListener('click', function () {
+            stylesReset();
+            redButton.classList.add('RED');
+            redButton.innerText = 'RED CLICKED';
+            redButton.style.color = 'black';
+            redButton.style.backgroundColor = 'white';
+
+            document.body.style.backgroundColor = 'red';
+            redCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        redButton.addEventListener('mouseover', function () {
+            redButton.style.color = 'black';
+            redButton.style.backgroundColor = 'white';
+            RedColorChangeCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        redButton.addEventListener('mouseout', function () {
+            redButton.style.color = 'white';
+            redButton.style.backgroundColor = 'black';
+        });
+
+        greenButton.addEventListener('click', function () {
+            stylesReset();
+            greenButton.classList.add('GREEN');
+            greenButton.innerText = 'GREEN CLICKED';
+            greenButton.style.color = 'black';
+            greenButton.style.backgroundColor = 'white';
+
+            document.body.style.backgroundColor = 'green';
+            greenCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        greenButton.addEventListener('mouseover', function () {
+            greenButton.style.color = 'black';
+            greenButton.style.backgroundColor = 'white';
+            GreenColorChangeCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        greenButton.addEventListener('mouseout', function () {
+            greenButton.style.color = 'white';
+            greenButton.style.backgroundColor = 'black';
+        });
+
+        blueButton.addEventListener('click', function () {
+            stylesReset();
+            blueButton.classList.add('BLUE');
+            blueButton.innerText = 'BLUE CLICKED';
+            blueButton.innerText.color = 'black';
+            blueButton.style.color = 'black';
+            blueButton.style.backgroundColor = 'white';
+
+            document.body.style.backgroundColor = 'blue';
+            blueCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        blueButton.addEventListener('mouseover', function () {
+            blueButton.style.color = 'black';
+            blueButton.style.backgroundColor = 'white';
+            BlueColorChangeCounter++;
+            TotalColorChangeCounter++;
+            updateCounters();
+        });
+
+        blueButton.addEventListener('mouseout', function () {
+            blueButton.style.color = 'white';
+            blueButton.style.backgroundColor = 'black';
+        });
+
+        function updateCounters() {
+            redCount.innerText = redCounter;
+            greenCount.innerText = greenCounter;
+            blueCount.innerText = blueCounter;
+            RedColorChangeCount.innerText = RedColorChangeCounter;
+            BlueColorChangeCount.innerText = BlueColorChangeCounter;
+            GreenColorChangeCount.innerText = GreenColorChangeCounter;
+            TotalColorChangeCount.innerText = TotalColorChangeCounter;
+        }
+
+        function stylesReset() {
+            redButton.classList.remove('RED');
+            greenButton.classList.remove('GREEN');
+            blueButton.classList.remove('BLUE');
+
+            redButton.classList.add('button_color');
+            greenButton.classList.add('button_color');
+            blueButton.classList.add('button_color');
+
+            redButton.style.color = 'white';
+            greenButton.style.color = 'white';
+            blueButton.style.color = 'white';
+
+            redButton.style.backgroundColor = 'black';
+            greenButton.style.backgroundColor = 'black';
+            blueButton.style.backgroundColor = 'black'
+
+            redButton.innerText = 'RED';
+            greenButton.innerText = 'GREEN';
+            blueButton.innerText = 'BLUE';
+        }
+    </script>
+</body>
+
+</html>

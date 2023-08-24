@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Connor Love's Website! | CaLove</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 20pt;
+        }
+
+        h2 {
+            text-align: center;
+            color: #522D80;
+            margin-left: 23px;
+        }
+
+        .content_area {
+            margin-top: 5%;
+            background-image: none;
+            top: 5%;
+        }
+
+        .content_area p {
+            font-size: 12pt;
+        }
+
+        .left_side {
+            position: absolute;
+            left: 0;
+            margin-top: 5px;
+        }
+
+        .keys {
+            border-bottom: 3px solid #522D80;
+            box-sizing: border-box;
+        }
+        
+    </style>
+    <script type="text/javascript">
+        function displayKey(e) {
+            var character;
+            //which Key is pressed?
+            if (e.keyCode) {
+                var keycode = e.keyCode;
+            }
+            else {
+                var keycode = e.which;
+            }
+
+            character = String.fromCharCode(keycode);
+
+            //Find the object for the destination paragraph
+            var keysParagraph = document.getElementById('keys');
+            const contentArea = document.querySelector('.content_area');
+            const H1 = document.querySelector('h1');
+            const H2 = document.querySelector('h2');
+
+            if (/[aeiouAEIOU]/i.test(character)) {
+                //Converts vowel to uppercase
+                character = character.toUpperCase();
+            } else if (/[rR]/i.test(character)) {
+                document.body.style.backgroundColor = "red"; //Changes background to red
+                contentArea.style.color = "white"; //Changes text color to white
+                H1.style.color = "white"; //Changes h1 text color to white
+                H2.style.color = "white"; //Changes h2 text color to white
+            } else if (/[gG]/i.test(character)) {
+                document.body.style.backgroundColor = "green"; //Changes background to green
+                contentArea.style.color = "white"; //Changes text color to white
+                H1.style.color = "white"; //Changes h1 text color to white
+                H2.style.color = "white"; //Changes h2 text color to white
+            } else if (/[bB]/i.test(character)) {
+                document.body.style.backgroundColor = "blue"; //Changes background to blue
+                contentArea.style.color = "white"; //Changes text color to white
+                H1.style.color = "white"; //Changes h1 text color to white
+                H2.style.color = "white"; //Changes h2 text color to white
+            }
+
+            //add the character to the paragraph
+            keysParagraph.innerHTML += character;
+        }
+    </script>
+</head>
+
+<body onkeypress="displayKey(event)">
+    <!--Menu-->
+    <header>
+        <div class="header">
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a
+                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
+                                            File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--Menu-->
+    <div class="wrapper">
+        <nav>
+            <div class="content_area">
+                <section onkeypress="displayKeyPress(event)">
+                    <h1>KeyPress Demo</h1>
+                    <hr>
+                    <h2>Displaying Typed Characters</h2>
+                    <p>This document includes a simple script that displays the keys you type as you type a new
+                        paragraph below. Type a few keys to try it. </p>
+                    <hr>
+                    <div id="keys"></div>
+                </section>
+            </div>
+
+            <div class="left_side">
+                <ul>
+                    <p><strong>Sections</strong><br></p>
+                    <hr>
+                    <li><a href="/420710/index.html">Home</a></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+
+                </ul>
+            </div>
+
+            <div class="right_side">
+                <ul></ul>
+            </div>
+        </nav>
+    </div>
+    <footer>|Created by calove (6/20/2023)|</footer>
+</body>
+
+</html>

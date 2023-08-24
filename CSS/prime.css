@@ -1,0 +1,54 @@
+.primeList {
+  background-color: green;
+  height: 200px;
+  height: fit-content;
+}
+
+.primeList h2, .nonPrimeList h2{
+      display: inline-block;
+      margin: 0;
+      white-space: nowrap;
+}
+
+.nonPrimeList {
+  background-color: red;
+  height: 200px;
+  height: fit-content;
+}
+
+.numbers-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#prime-column {
+  flex-basis: 100%;
+  padding-right: 10%;
+  color: white;
+}
+
+#non-prime-column{
+  flex-basis: 100%;
+  padding-left: 10%;
+  color: white;
+}
+
+.numbers-container::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background-color: black;
+  ;
+}
+
+/* alternate colors */
+.alt-primes-list {
+  background-color: yellow;
+}
+
+.alt-not-primes-list {
+  background-color: blue;
+}

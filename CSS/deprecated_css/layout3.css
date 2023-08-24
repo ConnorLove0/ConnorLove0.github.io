@@ -1,0 +1,134 @@
+#header {
+    width: 100%;
+    background-color: #F56600;
+    color:#522D80;
+    border-bottom: 3px solid white;
+
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+.navHead {
+    text-align: left;
+    font-size: large;
+}
+
+#wrapper {
+    width: 100%;
+    display: flex;
+}
+
+#left_side {
+    order: 1;
+    float: left;
+    display: table-cell;
+    text-align: left;
+    width: 15%;
+    height: 500px;
+    color: white;
+    background-color: #522D80;
+    height: 500px;
+    min-height: 100vh;
+}
+
+#content_area {
+    order: 2;
+    float: left;
+    text-align: center;
+    display: table-cell;
+    width: 70%;
+    word-break: keep-all;
+    color: black;
+    background-image: url("/420710/Images/cool-background.png");
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+#right_side {
+    order: 3;
+    float: left;
+    text-align: left;
+    display: table-cell;
+    width: auto;
+    height: 500px;
+    background-color: #522D80;
+    min-height: 100vh;
+}
+
+#left_side ul, #right_side ul {
+    list-style: none;
+    color: white;
+    margin: 8px 0px 0px 10px;
+    padding: 0px;
+}
+
+#left_side li a:link,
+#left_side li a:visited,
+#right_side li a:link,
+#right_side li a:visited {
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 3px 0px 3px 3px;
+    color: #F56600;
+    text-decoration: none;
+}
+
+#left_side li a:hover,
+#left_side li a:active,
+#right_side li a:hover,
+#right_side li a:active {
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 3px 0px 3px 3px;
+    color: white;
+    text-decoration: none;
+    word-break: normal;
+}
+
+#content_area p {
+    margin: 0 5px;
+    font-size: 18pt;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    color: black;
+    font-style: italic;
+    background-color: gray;
+    text-align: center;
+    padding: 10px;
+    clear: both;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    #wrapper {
+        flex-direction: row;
+    }
+
+    #left_side {
+        flex-shrink: 0;
+        order: 1;
+    }
+
+    #content_area {
+        flex-grow: 1;
+        order: 2;
+    }
+
+    #right_side {
+        flex-shrink: 0;
+        color: #F56600;
+        background-color: #522D80;
+    }
+
+    #content_area p {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 16pt;
+    }
+}

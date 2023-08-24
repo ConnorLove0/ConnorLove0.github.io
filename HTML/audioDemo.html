@@ -1,0 +1,366 @@
+<!--Connor Love-->
+<!--7/08/2023-->
+<!--Audio Demo-->
+<!--Senior-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Project: Audio Changer</title>
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        h2 {
+            color: #522D80;
+        }
+
+        .content_area {
+            overflow-y: auto;
+        }
+
+        .wrapper {
+            background-image: url("/420710/Images/cool-background.png");
+        }
+
+        .playlist-list {
+            text-align: left;
+        }
+
+        .playlist-list li {
+            color: #f56600;
+        }
+
+        .playlist-list button,
+        #button-rewind,
+        #button-pause,
+        #button-forward,
+        #button-addTitle,
+        #button-removeTitle {
+            background-color: #f56600;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .playlist-list .clicked {
+            color: #522D80;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        var audio;
+        var playlist = [
+            { title: "Skit", start: 0, stop: 21 },
+            { title: "Interlude #1 (RZA & Ol' Dirty Bastard)", start: 20, stop: 30 },
+            { title: "Inspectah Deck's Verse", start: 30, stop: 58 },
+            { title: "Raekwon's Verse", start: 59, stop: 87 },
+            { title: "Method Man's Verse", start: 87, stop: 120 },
+            { title: "U-God's Verse", start: 120, stop: 129 },
+            { title: "Interlude #2 (Ol' Dirty Bastard and RZA)", start: 129, stop: 139 },
+            { title: "Old Dirty Bastard's Verse", start: 138, stop: 171 },
+            { title: "Ghostface Killah's Verse", start: 171, stop: 204 },
+            { title: "RZA's Verse", start: 204, stop: 237 },
+            { title: "GZA's Verse", start: 237, stop: 280 },
+            { title: "Outro (RZA)", start: 281, stop: 300 },
+        ];
+        var currentIndex = -1;
+        var removeTitleMode = false;
+
+        function initialize() {
+            audio = document.getElementById("myaudio");
+            audio.addEventListener("timeupdate", updateCurrentTime);
+            //audio.addEventListener("ended", handleEnded);
+            audio.currentIndex = -1;
+            displayPlaylist();
+        }
+
+        function displayPlaylist() {
+            var playlistContainer = document.getElementById("playlist");
+            playlistContainer.innerHTML = "";
+
+            var playlistList = document.createElement("ul");
+            playlistList.classList.add("playlist-list");
+
+            for (var i = 0; i < playlist.length; i++) {
+                var title = playlist[i].title;
+                var listItem = document.createElement("li");
+                var button = document.createElement("button");
+                button.textContent = title;
+                button.addEventListener("click", playSegment.bind(null, i));
+                listItem.appendChild(button);
+                playlistList.appendChild(listItem);
+            }
+            playlistContainer.appendChild(playlistList);
+        }
+
+        function addTitle() {
+            var titleInput = document.getElementById("title-input");
+            var startTimeInput = document.getElementById("start-time-input");
+            var endTimeInput = document.getElementById("end-time-input");
+
+            var newTitle = titleInput.value;
+            var startTime = parseFloat(startTimeInput.value);
+            var endTime = parseFloat(endTimeInput.value);
+
+            if (newTitle.trim() !== "" && !isNaN(startTime) && !isNaN(endTime) && startTime < endTime) {
+                var newSegment = { title: newTitle, start: startTime, stop: endTime };
+                var insertIndex = playlist.findIndex(function (segment) {
+                    return segment.start > startTime;
+                });
+
+                if (insertIndex === -1) {
+                    playlist.push(newSegment);
+                }
+                else {
+                    playlist.splice(insertIndex, 0, newSegment);
+                }
+
+                displayPlaylist();
+                titleInput.value = "";
+                startTimeInput.value = "";
+                endTimeInput.value = "";
+            }
+            else if (playlist.length >= 50 || newTitle.trim() === "" || isNaN(startTime) || isNaN(endTime) || startTime >= endTime) {
+                // Invalid input or maximum limit reached
+                return;
+            }
+        }
+
+        function removeTitle() {
+            if (!removeTitleMode) {
+              // Enter Remove title mode
+              var segmentButton = document.querySelector("#playlist button.clicked");
+              if (segmentButton) {
+                var segmentName = segmentButton.textContent;
+                segmentButton.classList.remove("clicked");
+                var removeButton = document.getElementById("button-removeTitle");
+          
+                // Remove the segment from the playlist
+                var segmentIndex = playlist.findIndex(function(segment) {
+                  return segment.title === segmentName;
+                });
+                if (segmentIndex !== -1) {
+                  playlist.splice(segmentIndex, 1);
+                  displayPlaylist();
+                }
+              }
+            } else {
+              // Exit Remove Title Mode
+              var removeButton = document.getElementById("button-removeTitle");
+            }
+            removeTitleMode = !removeTitleMode;
+        }
+
+        function playSegment(index) {
+            var segment = playlist[index];
+            audio.currentTime = segment.start;
+            audio.play();
+            audio.currentIndex = index;
+            updateCurrentTime();
+
+            var endTime = segment.stop;
+
+            audio.removeEventListener("timeupdate", handleTimeUpdate);
+
+            audio.addEventListener("timeupdate", handleTimeUpdate);
+
+            function handleTimeUpdate() {
+                if (audio.currentTime >= endTime) {
+                    audio.pause();
+                    audio.removeEventListener("timeupdate", handleTimeUpdate);
+                }
+            }
+
+            var playlistButtons = document.querySelectorAll("#playlist button");
+            playlistButtons.forEach(function (button, i) {
+                if (i == index) {
+                    button.classList.add("clicked");
+                }
+                else {
+                    button.classList.remove("clicked");
+                }
+            });
+        }
+
+        function rewind() {
+            audio.currentTime -= 5;
+        }
+
+        function forward() {
+            audio.currentTime += 5;
+        }
+
+        function pauseplay() {
+            var button = document.getElementById("button-pause");
+
+            if (audio.paused) {
+                audio.play();
+                button.innerHTML = "Pause";
+            }
+            else {
+                audio.pause();
+                button.innerHTML = "Play";
+            }
+        }
+
+        function updateCurrentTime() {
+            var currentTime = document.getElementById("current-time");
+            currentTime.textContent = formatTime(audio.currentTime);
+        }
+
+        function handleEnded() {
+            currentIndex = -1;
+            var playlistButtons = document.querySelectorAll("#playlist button");
+            playlistButtons.forEach(function (button) {
+                button.classList.remove("clicked");
+            });
+        }
+
+        function formatTime(time) {
+            var minutes = Math.floor(time / 60);
+            var seconds = Math.floor(time % 60);
+            return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        }
+    </script>
+</head>
+
+<body onload="initialize()">
+    <header>
+        <div class="header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="audioDemo.html">Audio Demo</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a
+                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
+                                            File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="content_area">
+            <section>
+                <h1>Audio Changer Demo</h1>
+                <hr>
+                <audio id="myaudio" src="Protect Ya Neck.mp3"></audio>
+                <h2>Playlist</h2>
+                <hr>
+                <div id="playlist">
+                    <ul></ul>
+                </div>
+                <hr>
+                <button id="button-rewind" onclick="rewind()">Rewind 5 seconds</button>
+                <button id="button-pause" onclick="pauseplay()">Play</button>
+                <button id="button-forward" onclick="forward()">Fast-Forward 5 seconds</button>
+                <hr>
+                <div>
+                    <input type="text" id="title-input" placeholder="Enter Title">
+                    <input type="number" id="start-time-input" placeholder="Start Time (seconds)">
+                    <input type="number" id="end-time-input" placeholder="End Time (seconds)">
+                    <button id="button-addTitle" onclick="addTitle()">Add Title</button>
+                    <button id="button-removeTitle" onclick="removeTitle()">Remove Title</button>
+                </div>
+                <p>Current Time: <span id="current-time"></span></p>
+            </section>
+        </div>
+
+        <div class="left_side">
+            <ul>
+                <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <hr>
+                    <li><a href="/420710/index.html">Home</a><br></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="right_side">
+            <ul>
+            </ul>
+        </div>
+
+    </div>
+    <footer>|Created by calove (6/30/2023)|</footer>
+</body>
+
+</html>

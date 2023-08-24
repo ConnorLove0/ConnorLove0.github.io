@@ -1,0 +1,131 @@
+<!--Connor Love-->
+<!--7/18/2023-->
+<!--PHP I/0 App HTML Code-->
+<!--Senior-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP I/0 App</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .number-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .number-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        function displayPrimeNumbers() {
+            // Read and display the contents of prime.txt
+            fetch('prime.txt')
+                .then(response => response.text())
+                .then(numbers => {
+                    const primeList = document.getElementById('prime-list');
+                    primeList.innerHTML = numbers
+                        .split('\n')
+                        .map(number => `<li>${number}</li>`)
+                        .join('');
+                });
+        }
+
+        function checkNumbers(event) {
+            event.preventDefault(); // Prevent form submission and page reload
+
+            const numbersForm = document.getElementById('numbers-form');
+            const formData = new FormData(numbersForm);
+
+            // Submit the form programmatically
+            numbersForm.submit();
+        }
+
+        function resetForm() {
+            const numbersForm = document.getElementById('numbers-form');
+            numbersForm.reset();
+        }
+
+        function resetPrimeFile() {
+            fetch('reset_prime.php')
+              .then(response => response.text())
+              .then(message => {
+                console.log(message); // Optional: log the reset message
+                // Optionally, you can also update the UI or display a success message
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <nav>
+            <div class="content_area">
+                <h1>PHP I/O App</h1>
+
+                <!--<form id="numbers-form">-->
+                <form id = "numbers-form" method="post" onsubmit="checkNumbers(event)">
+                    <p>
+                        <label for="numbers">Enter Numbers (separated by commas):</label><br>
+                        <input type="text" id="numbers" name="numbers" required><br>
+                        <button type="submit" name="check">CHECK THESE NUMBERS</button>
+                        <button type="reset" name="reset">RESET</button>
+                    </p>
+                </form>
+
+                <form method="post" action="IO_app.php">
+                    <button type="submit" name="reset">RESET prime.txt</button>
+                </form>
+
+                <h2>Numbers:</h2>
+                <h3>Prime Numbers:</h3>
+                <ul class="number-list prime-numbers" id="prime-list">
+                    <!-- Placeholder for Prime Numbers-->
+                </ul>
+
+                <h3>Armstrong Numbers:</h3>
+                <ul class="number-list armstrong-numbers" id = "armstrong-list">
+                    <!-- Placeholder for Armstrong Numbers-->
+                </ul>
+
+                    <button type="button" onclick="displayPrimeNumbers()" >PRIME</button>
+            </div>
+
+            <div class="left_side">
+                <ul>
+                    <div class="navHead">
+                        <h1><strong>Sections</strong></h1>
+                        <hr>
+                        <button type="button" id="back" onclick="history.back()">Back<br></button>
+                        <li><a href="/420710/index.html">Home</a><br></li>
+                        <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="right_side">
+                <ul></ul>
+            </div>
+        </nav>
+    </div>
+    <footer>
+        <div id="footer">|Created by calove (7/18/2023)|</div>
+    </footer>
+</body>
+
+</html>

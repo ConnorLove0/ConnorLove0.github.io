@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>DMMT #2: DMMT Examples</title>
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        h1 {
+            font-size: 24pt;
+            color: #522D80;
+        }
+        h2 {
+            color: #522D80;
+            font-size: large;
+            text-align: left;
+        }
+        .wrapper {
+            background-image: url("/420710/Images/cool-background.png");
+            max-width: none!important; /* Override the default container size */
+        }
+
+        .content_area {
+            text-align: left;
+        }
+        .content_area p {
+            font-size: medium;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            padding-bottom: 56.25%;
+            overflow-y: auto;
+        }
+        p #title {
+            color: #522D80;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class = "header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="AJAXandPHP.html">AJAX and PHP Demo</a></li>
+                                    <li><a href="audioDemo.html">Audio Demo</a></li>
+                                    <li><a href="DMMTExamples.html">DMMT Examples</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="content_area">
+            <section>
+                <h1>DMMT Examples</h1>
+                <hr>
+
+                <h2>Rule: Clarity trumps Consistency</h2>
+                <p><strong>Good Example:</strong>
+                    This example page of TutorialRepublic.<br>
+                    It maintains a clean and minimalist design, prioritizing clarity and simplicity over excessive visual consistency.</p>
+                <p><a href="https://www.tutorialrepublic.com" target="myFrame">Open tutorialrepublic.com</a></p>
+                <hr>
+
+                <h2>Rule: Keep the Noise Down to a Dull Roar</h2>
+                <p><strong>Good Example:</strong>
+                    Leaders for Leaders's homepage.<br>
+                    It focuses on a single clear message and uses minimal visuals and concise text to avoid overwhelming the user with excessive noise.</p>
+                <p><a href="https://leadersforleaders.ca/" target="myFrame">Open leadersforleaders.ca</a></p>
+                <hr>
+
+                <h2>Rule: Trunk Test</h2>
+                <p><strong>Good Example:</strong>
+                    Mathguide's Elements of Effective Design page.<br>
+                    It displays essential information such as the title, breadcrumbs, and index, allowing users to quickly evaluate options without the need for
+                    additional clicks.</p>
+                <p><a href="https://www.mathguide.com/services/Design/Laws3.html" target="myFrame">Open mathguide.com</a></p>
+                <hr>
+
+                <h2>Rule: Break pages up into clearly defined areas</h2>
+                <p><strong>Violation Example:</strong>
+                    Wayfair.com.<br>
+                    Lack of Visual Hierarchy. Visual Hierarchy arranges and organizes website
+                    elements so that visitors naturally gravitate toward the most critical elements. The problem with
+                    Wayfair.com is that almost every element is the same size and color and has similar copy and icons. So
+                    users
+                    are being told to shop for beds and mattresses, vanities, area rugs, outdoor seating, and bedding
+                    sets
+                    at the same time. This can be overwhelming for the user and rather than deciding where to click
+                    first,
+                    some users might leave the site.</p>
+                <p><a href="https://www.wayfair.com" target="myFrame">Open wayfair.com</a></p>
+                <hr>
+
+                <h2>Rule: Format Text to support Scanning</h2>
+                <p><strong>Violation Example:</strong>
+                    007 Museum Sweden.<br>
+                    This website is all over the place with images and text thrown about with no thought at all for the user.
+                    The text is hard to read and hard to find, and is a fantastic example of how NOT to format a website</p>
+                <p><a href="http://www.007museum.com/" target="myFrame">Open 007museum.com</a></p>
+                <hr>
+
+                <h2>Rule: Omit Needless Words</h2>
+                <p><strong>Violation Example:</strong>
+                    gatesnfences.com.<br>
+                    The problem with Gates N Fences's website is that too much information is
+                    given to the user at once. This can lead to user paralysis and makes visitors instead choose
+                    websites with simpler, less confusing designs.</p>
+                <p><a href="http://www.gatesnfences.com/" target="myFrame">Open gatesnfences.com</a></p>
+                <hr>
+
+                <iframe name="myFrame"></iframe>
+            </section>
+        </div>
+
+        <div class="left_side">
+            <ul>
+                <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <hr>
+                    <li><a href="/420710/index.html">Home</a><br></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="right_side">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <footer>|Created by calove (7/8/2023)|</footer>
+</body>
+
+</html>

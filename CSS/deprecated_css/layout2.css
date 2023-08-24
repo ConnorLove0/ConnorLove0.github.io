@@ -1,0 +1,192 @@
+body {
+  margin:0;
+  padding:0;
+  min-width: 525px;
+  background-color: #522D80;
+  overflow-x: hidden;
+}
+
+header {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  background-color: #F56600;
+  border-bottom: 3px solid white;
+}
+
+footer {
+  position:relative;
+  float: left;
+  width: 100%;
+  color: black;
+  background-color: gray;
+  text-align: center;
+  font-family: italic;
+  font-style: italic;
+  padding: 10px;
+  clear: both;
+  box-sizing: border-box;
+}
+
+#wrapper {
+  float: left;
+  padding-left: 200px;
+  padding-right: 125px;
+  overflow: hidden;
+}
+
+#left_side {
+  display: flex;
+  position: relative;
+  float: left;
+  width: 194px;
+  color: white;
+  bottom: 0;
+  background-color: #522D80;
+  right: 200px;
+  margin-left: -100%;
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+  min-height: 100vh;
+}
+
+#right_side {
+  display: flex;
+  position: relative;
+  float: left;
+  width: 125px;
+  color: #F56600;
+  background-color: #522D80;
+  margin-right: -125px;
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+}
+
+#right_side p {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#content_area {
+  position: relative;
+  word-break: keep-all;
+  float: left;
+  color: black;
+  background-image: url("/420710/Images/cool-background.png");
+  border-right: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#content_area p {
+  margin: 0 5px;
+  font-size: 18pt;
+}
+  
+h1 {
+  margin: 0;
+  color: #522D80;
+  text-align: center;
+}
+
+#left_side ul {
+  list-style: none;
+  color: white;
+  margin: 12px 0px 0px 12px;
+  padding: 0px;
+}
+  
+#left_side li a:link, #left_side li a:visited, #right_side li a:link, #right_side li a:visited {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: #F56600;
+  text-decoration: none;
+  display: block;
+}
+  
+#left_side li a:hover, #left_side li a:active, #right_side li a:hover, #right_side li a:active {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+#Header-Image-Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+#The-Boys {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+}
+
+#appletree {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+}
+
+#sushi4 {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+}
+#ratings {
+  display: flex;
+  justify-content: center;
+}
+
+#ratings li {
+  justify-content: left;
+}
+
+#content_area li {
+  justify-content: left;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+
+  #wrapper {
+  flex-direction: row;
+}
+
+#left_side {
+  width: 197px;
+  flex-shrink: 0;
+  order: 1;
+}
+
+#content_area {
+  flex-grow: 1;
+  order: 2;
+}
+
+#right_side {
+  flex-shrink: 0;
+  width: 125px;
+  color: #F56600;
+  background-color: #522D80;
+  margin-top: 0;
+}
+
+#content_area p {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 16pt;
+  }
+}

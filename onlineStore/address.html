@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Address Form</title>
+    <link rel="style" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<style>
+    .wrapper {
+        margin-bottom: 100%;
+        height: 100%;
+        top: 0;
+        overflow-y: auto;
+    }
+
+    .wrapper::-webkit-scrollbar {
+        width: 0.5em;
+    }
+
+    .wrapper::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+        font-size: 16px;
+    }
+
+    body {
+        background-color: #435165;
+    }
+
+    .registerAddress {
+        width: 400px;
+        background-color: #ffffff;
+        box-shadow: 0 0 9px 0 #f56600;
+        margin: 30px auto;
+        width: 600px;
+        text-align: center;
+    }
+
+    .registerAddress h1 {
+        text-align: center;
+        background-color: #522d80;
+        color: #f56600;
+        font-size: 24px;
+        padding: 10px 0 10px 0;
+        border-bottom: 1px solid #f56600;
+        border-top: 1px solid #f56600;
+    }
+
+    .registerAddress form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .registerAddress form div {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .registerAddress form label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: #522d80;
+        color: #ffffff;
+    }
+
+    .registerAddress form input[type="text"] {
+        width: 310px;
+        height: 50px;
+        border: 1px solid #dee0e4;
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+
+    #submitAddressButton {
+        width: 100%;
+        padding: 15px;
+        margin-top: 20px;
+        background-color: #522d80;
+        border: 0;
+        cursor: pointer;
+        font-weight: bold;
+        color: #f56600;
+        transition: background-color 0.2s;
+    }
+
+    #submitAddressButton:hover {
+        color: white;
+        background-color: #f56600;
+    }
+</style>
+
+<body>
+    <div class="registerAddress">
+        <h1>Register Address</h1>
+        <form id="addAddressForm" action="address.php" method="post" autocomplete="on" onsubmit="addAddress(event)">
+            <div>
+                <label for="street_address">
+                    <i class="fas fa-address-card"></i>
+                </label>
+                <input type="text" name="street_address" placeholder="Street Address" id="street_address" required>
+            </div>
+            <br>
+            <div>
+                <label for="city">
+                    <i class="fas fa-city"></i>
+                </label>
+                <input type="text" name="city" placeholder="City" id="city" required>
+            </div>
+            <br>
+            <div>
+                <label for="state">
+                    <i class="fas fa-map-marker-alt"></i>
+                </label>
+                <input type="text" name="state" placeholder="State" id="state" required>
+            </div>
+            <br>
+            <div>
+                <label for="postal_code">
+                    <i class="fas fa-mail-bulk"></i>
+                </label>
+                <input type="text" name="postal_code" placeholder="Postal Code" id="postal_code" required>
+            </div>
+            <br>
+            <div>
+                <label for="country">
+                    <i class="fas fa-globe"></i>
+                </label>
+                <input type="text" name="country" placeholder="Country" id="country" required>
+            </div>
+            <br>
+            <div>
+                <label for="phone_number">
+                    <i class="fas fa-phone"></i>
+                </label>
+                <input type="text" name="phone_number" placeholder="Phone Number" id="phone_number">
+            </div>
+            <br>
+            <input type="submit" value="Submit" id="submitAddressButton">
+        </form>
+    </div>
+    <script>
+        // Function to handle the form submission and display the popup message
+        function addAddress(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Perform the form submission using AJAX
+            var form = document.getElementById('addAddressForm');
+            var formData = new FormData(form);
+
+            // Logging the card data to the console
+            formData.forEach(function (value, key) {
+                console.log(key + ': ' + value);
+            });
+
+            var xhr = new XMLHttpRequest();
+            xhr.open(form.method, form.action, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Display the success message as a popup
+                        alert("Address added successfully!");
+
+                        // Get the newly added address_id from the response
+                        var response = JSON.parse(xhr.responseText);
+                        var addressId = response.address_id;
+
+                        // Redirect back to cart.php with the address_id parameter
+                        window.location.href = 'cart.php?address_id=' + addressId;
+                    } else {
+                        // Handle the case where the form submission failed
+                        alert("Failed to add the Address.");
+                    }
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+</body>
+
+</html>

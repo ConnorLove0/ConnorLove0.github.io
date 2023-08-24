@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Record Insertion Form</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        .right_side {
+            width: 10%;
+        }
+
+        .content_area {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+            font-size: 16px;
+            padding-bottom: 100%;
+        }
+
+        body {
+            background-color: #435165;
+            margin: 0;
+        }
+
+        .insert_form {
+            width: 400px;
+            background-color: #ffffff;
+            box-shadow: 0 0 9px 0 #f56600;
+            margin: 15px auto;
+        }
+
+        .insert_form form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .insert_form form label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: #522d80;
+            color: #ffffff;
+        }
+
+        .insert_form form input[type="text"],
+        .insert_form form input[type="email"] {
+            width: 310px;
+            height: 50px;
+            border: 1px solid #dee0e4;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        .insert_form form button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #522d80;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #f56600;
+            transition: background-color 0.2s;
+        }
+
+        .insert_form form input[type="submit"]:hover,
+        #fetchNamesButton:hover {
+            background-color: #f56600;
+            color: #522d80;
+            transition: background-color 0.2s;
+        }
+
+        .names_list {
+            background-color: white;
+            width: 750px;
+            box-shadow: 0 0 9px 0 #f56600;
+            margin: 100px auto;
+        }
+
+        .names_list h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #522d80;
+            color: #ffffff;
+        }
+
+        .names_list ul {
+            list-style: none;
+            /* Remove default bullets */
+            padding: 0;
+        }
+
+        .names_list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+        }
+
+        .names_list .column_headers {
+            font-weight: bold;
+            background-color: #522d80;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        /* Add borders between each column */
+        .names_list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Center align the items vertically */
+            padding: 5px 10px;
+        }
+
+        .names_list h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #522d80;
+            color: #ffffff;
+        }
+
+        /* Center align the contents within each row */
+        .names_list li span {
+            flex: 1;
+            /* Distribute the remaining width evenly */
+        }
+
+        /* Add spacing between rows */
+        .names_list li:not(h2) {
+            margin-top: 5px;
+        }
+
+        #email-input {
+            width: 70%;
+        }
+        #sortByLastNameButton, #searchButton {
+            color: #f56600;
+            background-color: #522d80;
+        }
+        #sortByLastNameButton:hover, #searchButton:hover {
+            color: #522d80;
+            background-color: #f56600;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/phplogin/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="AJAXandPHP.html">AJAX and PHP Demo</a></li>
+                                    <li><a href="audioDemo.html">Audio Demo</a></li>
+                                    <li><a href="DMMTExamples.html">DMMT Examples</a></li>
+                                    <li><a href="pokemon_collect_app_p1.html">Collect App Phase 1</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a
+                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
+                                            File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="pokemon_collect_app_p2.php">Collect App Phase 2</a></li>
+                                    <li><a href="Exam2.php">Exam2.php</a></li>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                    <li><a href="IO_app.php">PHP File I/O App</a></li>
+                                    <li><a href="seestore.php">seestore.php</a></li>
+                                    <li><a href="seestore_withJS.php">seestore_withJS.php</a></li>
+                                    <li><a href="showitem.php">showitem.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="content_area">
+            <div class="insert_form">
+                <form action="/phplogin/420710/PHP/insert.php" method="post" target="hidden_iframe" onsubmit="resetFormFields()">
+                    <label for="firstName">
+                        <i class="fas fa-user"></i>
+                    </label>
+                    <input type="text" name="firstName" placeholder="First Name" id="firstname" required>
+                    <label for="lastName">
+                        <i class="fas fa-lock"></i>
+                    </label>
+                    <input type="text" name="lastName" placeholder="Last Name" id="lastName" required>
+                    <label for="email-input">
+                        <i class="fas fa-envelope"></i>
+                    </label>
+                    <input type="email" name="email-input" placeholder="Email" id="email-input" required>
+                    <button type="submit" name="submit" value="insert" id="insertButton">Insert Record</button>
+                </form>
+                <iframe name="hidden_iframe" style="display: none;"></iframe>
+            </div>
+            <div class="names_list">
+                <h2>Names in the Database</h2>
+                <label for="searchLastName">Search by Last Name:</label>
+                <input type="text" id="searchLastName" placeholder="Enter last name">
+                <button type="button" id="searchButton">Search</button>
+                <button id="sortByLastNameButton">Sort by Last Name</button>
+                <ul id="names"></ul>
+            </div>
+        </div>
+
+        <div class="left_side">
+            <ul>
+                <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <hr>
+                    <li><a href="/420710/index.html">Home</a><br></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="right_side">
+            <ul></ul>
+        </div>
+    </div>
+    <footer>
+        <div id="footer">|Created by calove (6/18/2023)|</div>
+    </footer>
+</body>
+
+<script>
+    function resetFormFields() {
+        // Get the form element
+        const insertForm = document.querySelector('.insert_form form');
+
+        // Reset the form after a 1-second delay
+        setTimeout(() => {
+            insertForm.reset();
+        }, 1000);
+    }
+
+    // JavaScript code to fetch and display names
+    function fetchNames(searchTerm) {
+        fetch(`/phplogin/420710/PHP/select.php${searchTerm ? `?lastName=${encodeURIComponent(searchTerm)}` : ''}`)
+            .then(response => response.json())
+            .then(names => {
+                const namesList = document.getElementById('names');
+                namesList.innerHTML = ''; // Clear the existing list
+
+                names.forEach(name => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <span><strong>Last Name:</strong> ${name.last_name}</span>
+                        <span><strong>First Name:</strong> ${name.first_name}</span>
+                        <span><strong>Email:</strong> ${name.email}</span>
+                    `;
+                    namesList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching names:', error));
+    }
+
+    // Search button event handler
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const searchValue = document.getElementById('searchLastName').value.trim();
+        fetchNames(searchValue);
+    });
+
+    // Enter key press event handler on the input field
+    document.getElementById('searchLastName').addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const searchValue = event.target.value.trim();
+            fetchNames(searchValue);
+        }
+    });
+
+    // Sort button event handler
+    document.getElementById('sortByLastNameButton').addEventListener('click', () => {
+        fetch(`/phplogin/420710/PHP/select.php?sortBy=last_name`)
+            .then(response => response.json())
+            .then(names => {
+                const namesList = document.getElementById('names');
+                namesList.innerHTML = ''; // Clear the existing list
+
+                names.forEach(name => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <span><strong>Last Name:</strong> ${name.last_name}</span>
+                        <span><strong>First Name:</strong> ${name.first_name}</span>
+                        <span><strong>Email:</strong> ${name.email}</span>
+                    `;
+                    namesList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching names:', error));
+    });
+</script>
+
+</html>

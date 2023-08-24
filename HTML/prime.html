@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Programming Exam #1</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="prime.css">
+    <script src="prime.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 20pt;
+        }
+        h2 {
+            text-align: center;
+            white-space: nowrap ;
+            color: black;
+            font-size: 15pt;
+        }
+        body{
+            animation: colorChange 25s infinite;
+            animation-delay: 1s;
+            z-index: -1;
+        }
+        .content_area {
+            height: 100%;
+            bottom: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            background-image: none;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .button-container {
+            margin: auto;
+        }
+        #output, #output2{
+            visibility: hidden;
+        }
+        @keyframes colorChange {
+            0% { background-color: red; }
+            20% {background-color: red; }
+            25% {background-color: orange; }
+            45% {background-color: orange; }
+            50% {background-color: yellow; }
+            70% {background-color: yellow; }
+            75% {background-color: green; }
+            95% {background-color: green; }
+            100% { background-color: blue; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="content_area">
+            <section>
+                <h2>Find Prime Numbers</h2><br>
+                <label for="number-input">Input a number:</label>
+                <input type="number" id="number-input" />
+                <button onclick="findPrimes()">Start</button>
+                <hr>
+
+                <div class="numbers-container">
+                    <div id="prime-column">
+                        <h2>Prime Numbers</h2>
+
+                        <div class="primeList">
+                            <ul id="prime-numbers"></ul>
+                        </div>
+
+                        <input type="button" class="button-container" value="Sum" onclick="sumPrimes()">
+                        <div id = "output">
+                            <h2>Sum = <span id = "primeSum"></span></h2>
+                        </div>
+                    </div>
+
+                    <div id="non-prime-column">
+                        <h2>Non-Prime Numbers</h2>
+
+                        <div class="nonPrimeList">
+                            <ul id="non-prime-numbers"></ul>
+                        </div>
+
+                        <input type="button" class="button-container" value="Sum" onclick="sumNonPrimes()">
+                        <div id = "output2">
+                            <h2>Sum = <span id = "nonPrimeSum"></span></h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="left_side">
+            <p><strong>Sections</strong>
+                <hr>
+            </p>
+            <ul>
+                <li><a href="/420710/index.html">Home</a></li>
+                <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+            </ul>
+        </div>
+        <div class="right_side"></div>
+    </div>
+    <footer>|Created by calove (6/19/2023)|</footer>
+</body>
+
+</html>

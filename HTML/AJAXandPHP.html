@@ -1,0 +1,301 @@
+<!--Connor Love--> 
+<!--7/08/2023--> 
+<!--AJAX and PHP--> 
+<!--Senior--> 
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>AJAX and PHP</title>
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .wrapper{
+            background-image: url("/420710/Images/cool-background.png");
+        }
+        #capitalDisplay {
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+    <script>
+
+        function loadXMLDoc() {
+            var xml_http = new XMLHttpRequest();
+            xml_http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xml_http.open("GET", "states.xml", true);
+            xml_http.send();
+        }
+
+        function myFunction(xml_http) {
+            var xmlDoc = xml_http.responseXML;
+            var states = xmlDoc.getElementsByTagName("STATE");
+            var capitalList = {};
+
+            for (var i = 0; i < states.length; i++) {
+                var stateName = states[i].getElementsByTagName("NAME")[0].textContent;
+                var capitalName = states[i].getElementsByTagName("CAPITAL")[0].textContent;
+    
+                capitalList[stateName] = capitalName;
+            }
+
+            autocomplete(document.getElementById("stateInput"), capitalList);
+        }
+
+        function autocomplete(input, capitalList) {
+            var currFocus;
+            input.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+
+                if (!val) { 
+                    return false; 
+                }
+
+                currFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        b.addEventListener("click", function (e) {
+                            input.value = this.getElementsByTagName("input")[0].value;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+
+            input.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) {
+                    x = x.getElementsByTagName("div");
+                }
+
+                if (e.keyCode == 40) {
+                    currFocus++;
+                    addActive(x);
+                }
+                else if (e.keyCode == 38) {
+                    currFocus--;
+                    addActive(x);
+
+                }
+                else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currFocus > -1) {
+                        if (x) {
+                            x[currFocus].click(); 
+                        }
+                    }
+                }
+            });
+            function addActive(x) {
+                if (!x) {
+                    return false;
+                }
+
+                removeActive(x);
+                if (currFocus >= x.length) {
+                    currFocus = 0;
+                }
+                if (currFocus < 0) {
+                    currFocus = x.length - 1;
+                }
+                x[currFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists() {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
+            }
+            
+            document.addEventListener("click", function (e) {
+                closeAllLists();
+            });
+
+            input.addEventListener("input", function (e) {
+                var state = this.value;
+                var matchingStates = Object.keys(capitalList).filter(function (key) {
+                    return key.toUpperCase().startsWith(state.toUpperCase());
+                });
+                displayCapitals(matchingStates, capitalList);
+            });
+
+            function displayCapitals(states, capitalList) {
+                var capitalDisplay = document.getElementById("capitalDisplay");
+                capitalDisplay.innerHTML = "";
+
+                for (var i = 0; i < states.length; i++) {
+                    var state = states[i];
+                    var capital = capitalList[state];
+
+                    if (capital) {
+                        var capitalDiv = document.createElement("div");
+                        capitalDiv.textContent = "State: " + state + "; Capital: " + capital;
+                        capitalDisplay.appendChild(capitalDiv);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="loadXMLDoc()">
+    <header>
+        <div class="header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="AJAXandPHP.html">AJAX and PHP Demo</a></li>
+                                    <li><a href="audioDemo.html">Audio Demo</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a
+                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
+                                            File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="content_area">
+
+            <section>
+                <h1><strong>AJAX and PHP Demo</strong></h1>
+                <hr>
+                <div class="container">
+                    <h2 style="color: #522D80">State Search</h2>
+                    <hr>
+                    <div class="search_box">
+                        <input type="text" id="stateInput" placeholder="Enter a State...">
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </div>
+                    <div id="capitalDisplay"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="left_side">
+            <ul>
+                <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <hr>
+                    <li><a href="/420710/index.html">Home</a><br></li>
+                    <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="right_side">
+            <ul>
+            </ul>
+        </div>
+
+    </div>
+    <footer>|Created by calove (6/30/2023)|</footer>
+</body>
+
+</html>

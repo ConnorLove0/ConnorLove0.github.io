@@ -1,0 +1,23 @@
+.ButtonArea {
+  background-color: black;
+}
+
+.Jumbotron {
+  background-color: gray;
+}
+
+.Header {
+  background-color: #522D80;
+  text-align: center;
+  padding: 10px;
+}
+
+#user {
+  background-color: #b3ffff;
+  color: black;
+}
+
+#start {
+  background-color: #b3ffff;
+  color: black;
+}

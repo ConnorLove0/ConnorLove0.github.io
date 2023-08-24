@@ -1,0 +1,264 @@
+<!--Connor Love-->
+<!--6/18/2023-->
+<!--Index-->
+<!--Senior-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon Collect App Phase 1</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        body {
+            background-image: url("Images/cool-background.png");
+            width: auto;
+        }
+
+        .results-container {
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            width: 100%;
+            margin-left: auto;
+
+        }
+
+        .content_area {
+            margin-bottom: 20%;
+        }
+
+        .card-table-wrapper {
+            display: flex;
+            flex-direction: wrap;
+            justify-content: center;
+            height: 5px;
+            max-width: calc(100% - 20px);
+            margin: 0 auto;
+        }
+
+        .card-row {
+            display: flex;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+            cursor: pointer;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .pokemon-card {
+            margin: 10px;
+            cursor: pointer;
+            flex-basis: 150px;
+            height: fit-content;
+        }
+
+        .search-container button {
+            background-color: #522d80;
+            color: #f56600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .dropdown-container label {
+            background-color: #522d80;
+            color: #f56600;
+        }
+
+        .dropdown-container {
+            text-align: center;
+        }
+
+        .search-container button:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <!--MENU-->
+            <div class="menu">
+                <nav>
+                    <input type="checkbox" id="show-search">
+                    <input type="checkbox" id="show-menu">
+                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                    <div class="menu_content">
+                        <div class="logo"><a href="#">CaLove</a></div>
+                        <ul class="links">
+                            <li><a href="/420710/index.html">Home</a></li>
+                            <li>
+                                <a href="#" class="desktop-link">HTML Code</a>
+                                <input type="checkbox" id="show-html">
+                                <label for="show-html">HTML Code</label>
+                                <ul>
+                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
+                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
+                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
+                                    <li><a href="sortDemo.html">Sort Demo</a></li>
+                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
+                                    <li><a href="cards.html">Card Demo</a></li>
+                                    <li><a href="keypress.html">KeyPress Demo</a></li>
+                                    <li><a href="prime.html">Prime Numbers</a></li>
+                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
+                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
+                                    <li><a href="AJAXandPHP.html">AJAX and PHP Demo</a></li>
+                                    <li><a href="audioDemo.html">Audio Demo</a></li>
+                                    <li><a href="DMMTExamples.html">DMMT Examples</a></li>
+                                    <li>
+                                        <a href="#" class="desktop-link">HTML with Pictures</a>
+                                        <input type="checkbox" id="show-htmlp">
+                                        <label for="show-htmlp">HTML with Pictures</label>
+                                        <ul>
+                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
+                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
+                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">CSS Code</a>
+                                <input type="checkbox" id="show-css">
+                                <label for="show-css">CSS Code</label>
+                                <ul>
+                                    <li><a href="layout.css">layout.css</a></li>
+                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
+                                    <li><a href="prime.css">prime.css</a></li>
+                                    <li><a
+                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
+                                            File</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">JavaScript Code</a>
+                                <input type="checkbox" id="show-js">
+                                <label for="show-js">JavaScript Code</label>
+                                <ul>
+                                    <li><a href="chapter04.html">Chapter04.html</a></li>
+                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
+                                    <li><a href="cards.js">cards.js</a></li>
+                                    <li><a href="prime.js">prime.js</a></li>
+                                    <li><a href="loops.js">loops.js</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="desktop-link">PHP Code</a>
+                                <input type="checkbox" id="show-php">
+                                <label for="show-php">PHP Code</label>
+                                <ul>
+                                    <li><a href="helloworld.php">Helloworld.php</a></li>
+                                    <li><a href="IO_app.php">PHP File I/O App</a></li>
+                                    <li><a href="seestore.php">seestore.php</a></li>
+                                    <li><a href="seestore_withJS.php">seestore_withJS.php</a></li>
+                                    <li><a href="showitem.php">showitem.php</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+                    <form action="#" class="search-box">
+                        <input type="text" placeholder="Type Something to Search..." required>
+                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+                    </form>
+                </nav>
+            </div>
+            <!--END OF MENU-->
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <nav>
+            <div class="content_area">
+                <h1>Pokemon Card Search App</h1>
+                <div class="search-container">
+                    <p>Search for a Pokemon</p>
+                    <input type="text" id="search-input" placeholder="Enter Pokémon Name">
+                    <datalist id="pokemon-options">
+                        <!-- Add options here -->
+                    </datalist>
+                    <button id="search-button">Search</button>
+                </div>
+
+                <div class="dropdown-container">
+                    <label for="pokemon-dropdown">Need Help?</label>
+                    <select id="pokemon-dropdown">
+                        <option value="" disabled selected>Pokemon Names</option>
+                    </select>
+                </div>
+
+                <div class="results-container"><hr>
+                    <!--Search Results will be displayed here-->
+                <hr></div>
+            </div>
+
+            <div class="left_side">
+                <ul>
+                    <div class="navHead">
+                        <h1><strong>Sections</strong></h1>
+                        <hr>
+                        <li><a href="/420710/index.html">Home</a><br></li>
+                        <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="right_side">
+                <ul>
+                    <div class="navHead">
+                        <h1><strong>Pages</strong></h1>
+                        <hr>
+                        <li><a href="/420710/about.html">About API</a></li>
+                        <li><a href="/420710/stats.html">Pokemon Stats</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <footer>
+        <div id="footer">|Created by calove (7/15/2023)|</div>
+    </footer>
+    <script src="/420710/JS/statsScript.js"></script>
+    <script src="/420710/JS/pokemonScript.js"></script>
+    <script>
+        // Function to capitalize the first letter of a string
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    
+        // JavaScript code to populate the dropdown menu
+        document.addEventListener("DOMContentLoaded", async function () {
+            const dropdownMenu = document.getElementById("pokemon-dropdown");
+    
+            try {
+                // Fetch the list of all Pokémon names from the PokéAPI
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
+                const data = await response.json();
+    
+                // Extract the names of all Pokémon
+                const pokemonNames = data.results.map((pokemon) => pokemon.name);
+    
+                // Sort the Pokémon names alphabetically
+                pokemonNames.sort();
+    
+                // Iterate through the sorted list of Pokémon names and add them to the dropdown menu
+                pokemonNames.forEach(function (pokemonName) {
+                    const capitalizedPokemonName = capitalizeFirstLetter(pokemonName);
+                    const optionElement = document.createElement("option");
+                    optionElement.textContent = capitalizedPokemonName;
+                    dropdownMenu.appendChild(optionElement);
+                });
+            } catch (error) {
+                console.error("Error fetching Pokémon data:", error);
+            }
+        });
+    </script>
+</body>
+
+</html>
