@@ -217,6 +217,10 @@ nav .menu_content .links {
     display: none;
 }
 
+.menu_content .links .desktop-link:hover {
+    background-color: #522D80;
+}
+
 .menu_content .links li a:hover,
 .menu_content .links li label:hover {
     background: #F56600;
@@ -300,17 +304,19 @@ nav .menu_content .links {
 }
 
 .menu_content .links li:hover>ul {
-    top: 70px;
+    top: 60px;
     opacity: 1;
     visibility: visible;
     transition: all 0.3s ease;
+    background: #522D80;
 }
 
 .menu_content .links ul li a {
     display: block;
-    width: 100%;
+    width: auto;
     line-height: 30px;
     border-radius: 0px !important;
+    padding-inline-start: initial;
 }
 
 .menu_content .links ul ul {
@@ -325,6 +331,10 @@ nav .menu_content .links {
 
 .menu_content .links ul li:hover ul {
     top: 0;
+}
+
+.menu_content .links .dropdown-container {
+    padding: 5px 5px 5px 5px;
 }
 
 /*************END OF MENU*******************/
@@ -491,6 +501,7 @@ footer {
 
     .menu .search-box {
         max-width: calc(100% - 100px);
+        transition: all 0.3s ease;
     }
 
     .menu .search-box input {
