@@ -17,6 +17,7 @@ body {
     background-size: cover;
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
 }
 
 #show-html{
@@ -157,7 +158,17 @@ html .breadcrumbs .ui-button.ui-state-disabled:active {
     bottom: 0;
     height: 100%;
     width: 100%;
-    overflow-y: auto;
+    overflow: auto;
+    
+}
+
+/* Right Side Section */
+.navHead {
+    text-align: left;
+    position: fixed;
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 /*************MENU*******************/
@@ -260,8 +271,11 @@ nav .menu_content .links {
 }
 
 .search-box input {
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    right: 160px;
+    width: 350px;
+    height: 60px;
+    z-index: 2;
     border: none;
     outline: none;
     font-size: 17px;
@@ -275,6 +289,7 @@ nav .menu_content .links {
 }
 
 .search-box .go-icon {
+    z-index: 3;
     position: absolute;
     right: 10px;
     top: 50%;
@@ -394,6 +409,7 @@ nav .menu_content .links {
     min-height: 100vh;
     border-left: 3px solid #F56600;
     background-color: #522D80;
+    overflow-y: hidden;
 }
 
 .left_side ul,
