@@ -12,8 +12,8 @@
     box-sizing: border-box;
 }
 
-.body {
-    background-image: url("/420710/Images/cool-background.png");
+body {
+    background-image: url("../Images/cool-background.png");
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -370,7 +370,7 @@ nav .menu_content .links {
     word-break: keep-all;
     color: black;
     background-size: cover;
-    border-bottom: 3px solid white;
+    /* border-bottom: 3px solid black; */
     box-sizing: border-box;
 }
 
