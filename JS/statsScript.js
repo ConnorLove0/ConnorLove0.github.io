@@ -1,7 +1,7 @@
 const PokemonStatsApp = {
   //Adds Content to displayCard.html
   createPokemonCardPage: function (pokemon) {
-    const cardPage = window.open("displayCard.html", "_blank");
+    const cardPage = window.open("/HTML/displayCard.html", "_blank");
 
     const attacksString = pokemon.attacks
       ? pokemon.attacks

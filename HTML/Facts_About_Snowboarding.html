@@ -13,6 +13,7 @@
         h1 {
             text-align: center;
         }
+
         .content_area {
             margin-top: 20px;
             box-sizing: border-box;
@@ -25,24 +26,30 @@
             max-height: 500px;
             width: 100%;
         }
+
         #ratings {
             position: relative;
             height: fit-content;
             top: 205px;
         }
-
     </style>
 </head>
+
 <body>
     <!--Navbar Menu-->
-    <header><div class="header" id="navbar"></div></header>
+    <header>
+        <div class="header" id="navbar"></div>
+    </header>
 
     <div class="wrapper">
         <div class="content_area">
             <div id="facts">
-                <h1>5 Facts About Snowboarding<hr></h1>
+                <h1>5 Facts About Snowboarding
+                    <hr>
+                </h1>
                 <nav>
-                    <ol><li>Snowboarding wasn't the original name for the sport. Snowboarding was originally called
+                    <ol>
+                        <li>Snowboarding wasn't the original name for the sport. Snowboarding was originally called
                             'snurfing', which was a mix between the snow and surfing!<br><br>
                         </li>
                         <li>The United States has the has the most Olympic Snowboarding medals. To Date, the U.S. has
@@ -68,7 +75,9 @@
 
             <div id="ratings">
                 <nav>
-                    <h1>My Rating of the Places I've Snowboarded at<hr></h1>
+                    <h1>My Rating of the Places I've Snowboarded at
+                        <hr>
+                    </h1>
                     <ol>
                         <li>Snowshoe, West Virginia<br><br></li>
                         <li>Beech Mountain, North Carolina<br><br></li>
@@ -86,7 +95,9 @@
 
         <div class="left_side">
             <ul>
-                <div class="navHead"><h1><strong>Sections</strong></h1><hr>
+                <div class="navHead">
+                    <h1><strong>Sections</strong></h1>
+                    <hr>
                     <li><a href="#facts">Facts</a></li>
                     <li><a href="#ratings">Ratings</a></li>
                     <li><a href="/HTML/index.html">Back to Index</a></li>
@@ -95,37 +106,43 @@
         </div>
         <div class="right_side">
             <ul>
-                <div class="navHead"><h1><strong>Links</strong></h1><hr>
-                    <li><a href="/HTML/Ski_Maps.html">Ski Maps Link</a></li><hr>
-                    <li><a href="/HTML/Facts_About_Apples.html">Link to Facts about Apples</a></li><hr>
-                    <li><a href="/HTML/Facts_About_Sushi.html">Link to Facts about Sushi</a></li><hr>
-                    <li><a href="mailto:calove@g.clemson.edu">Email me if you have any questions.</a></li><hr>
+                <div class="navHead">
+                    <h1><strong>Links</strong></h1>
+                    <hr>
+                    <li><a href="/HTML/Ski_Maps.html">Ski Maps Link</a></li>
+                    <hr>
+                    <li><a href="/HTML/Facts_About_Apples.html">Link to Facts about Apples</a></li>
+                    <hr>
+                    <li><a href="/HTML/Facts_About_Sushi.html">Link to Facts about Sushi</a></li>
+                    <hr>
+                    <li><a href="mailto:calove@g.clemson.edu">Email me if you have any questions.</a></li>
+                    <hr>
                 </div>
             </ul>
         </div>
-    <footer>|© Created by calove (5/28/2023)|</footer>
+        <footer>|© Created by calove (5/28/2023)|</footer>
 
-    <script>
-        // Fetch the content of menu.html and insert it into the div with id "navbar"
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                // Create a temporary element to parse the fetched HTML
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data;
-    
-                // Find the menu div within the fetched content
-                const menuContent = tempDiv.querySelector('.menu');
-    
-                // Insert the menu content into the header div if it exists
-                if (menuContent) {
-                    document.getElementById('navbar').appendChild(menuContent);
-                } else {
-                    console.error('Menu content not found in menu.html');
-                }
-            })
-            .catch(error => console.error('Error loading the navbar:', error));
-    </script>
+        <script>
+            // Fetch the content of menu.html and insert it into the div with id "navbar"
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Create a temporary element to parse the fetched HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+
+                    // Find the menu div within the fetched content
+                    const menuContent = tempDiv.querySelector('.menu');
+
+                    // Insert the menu content into the header div if it exists
+                    if (menuContent) {
+                        document.getElementById('navbar').appendChild(menuContent);
+                    } else {
+                        console.error('Menu content not found in menu.html');
+                    }
+                })
+                .catch(error => console.error('Error loading the navbar:', error));
+        </script>
 </body>
 
 </html>

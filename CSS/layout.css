@@ -383,7 +383,7 @@ nav .menu_content .links {
     flex-direction: column;
     display: flex;
     width: auto;
-    height: 100%;
+    height: 1000px;
     bottom: 0;
     word-break: keep-all;
     color: black;
