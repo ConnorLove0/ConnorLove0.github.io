@@ -73,11 +73,6 @@ if (!isset($_SESSION['loggedin'])) {
             flex: 1;
         }
 
-        body {
-            background-image: url("Images/cool-background.png");
-            width: auto;
-        }
-
         .card-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -214,7 +209,7 @@ if (!isset($_SESSION['loggedin'])) {
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: "http://localhost/phplogin/420710/PHP/authenticate.php", // Replace with the actual URL of the PHP script to retrieve the username
+                url: "https://connorlove0.github.io/PHP/authenticate.php", // Replace with the actual URL of the PHP script to retrieve the username
                 dataType: "json",
                 success: function (response) {
                     // Update the username in the HTML

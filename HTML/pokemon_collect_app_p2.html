@@ -13,8 +13,8 @@ function getLoggedInUsername() {
         // return $_SESSION['name'];
         // Replace "YourUsernameHere" with the actual name of the logged-in user
         //var loggedInUsername = "<?php echo isset($_SESSION['username']) ? $_SESSION['name'] : ''; ?>";
-        return isset($_SESSION['username']) ? $_SESSION['username'] : '';
-    }
+return isset($_SESSION['username']) ? $_SESSION['username'] : '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,14 +26,9 @@ function getLoggedInUsername() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokemon Collect App Phase 1</title>
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="/CSS/layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
-        body {
-            background-image: url("Images/cool-background.png");
-            width: auto;
-        }
-
         .results-container {
             display: flex;
             flex-flow: wrap;
@@ -97,93 +92,7 @@ function getLoggedInUsername() {
 <body>
     <header>
         <div class="header">
-            <!--MENU-->
-            <div class="menu">
-                <nav>
-                    <input type="checkbox" id="show-search">
-                    <input type="checkbox" id="show-menu">
-                    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
-                    <div class="menu_content">
-                        <div class="logo"><a href="#">CaLove</a></div>
-                        <ul class="links">
-                            <li><a href="/420710/index.html">Home</a></li>
-                            <li>
-                                <a href="#" class="desktop-link">HTML Code</a>
-                                <input type="checkbox" id="show-html">
-                                <label for="show-html">HTML Code</label>
-                                <ul>
-                                    <li><a href="Facts_About_Snowboarding.html">Facts about Snowboarding</a></li>
-                                    <li><a href="Facts_About_Apples.html">Facts about Apples</a></li>
-                                    <li><a href="Facts_About_Sushi.html">Facts about Sushi</a></li>
-                                    <li><a href="sortDemo.html">Sort Demo</a></li>
-                                    <li><a href="ButtonMove.html">Moving Buttons</a></li>
-                                    <li><a href="cards.html">Card Demo</a></li>
-                                    <li><a href="keypress.html">KeyPress Demo</a></li>
-                                    <li><a href="prime.html">Prime Numbers</a></li>
-                                    <li><a href="jQueryDemo.html">jQuery Demo</a></li>
-                                    <li><a href="dynamicCardDemo.html">Dynamic Card Demo</a></li>
-                                    <li><a href="AJAXandPHP.html">AJAX and PHP Demo</a></li>
-                                    <li><a href="audioDemo.html">Audio Demo</a></li>
-                                    <li><a href="DMMTExamples.html">DMMT Examples</a></li>
-                                    <li>
-                                        <a href="#" class="desktop-link">HTML with Pictures</a>
-                                        <input type="checkbox" id="show-htmlp">
-                                        <label for="show-htmlp">HTML with Pictures</label>
-                                        <ul>
-                                            <li><a href="Ski_Maps.html">Ski Maps</a></li>
-                                            <li><a href="Apple_Pictures.html">More Apple Pictures</a></li>
-                                            <li><a href="Sushi_Pictures.html">More Sushi Pictures</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="desktop-link">CSS Code</a>
-                                <input type="checkbox" id="show-css">
-                                <label for="show-css">CSS Code</label>
-                                <ul>
-                                    <li><a href="layout.css">layout.css</a></li>
-                                    <li><a href="ButtonMove.css">ButtonMove.css</a></li>
-                                    <li><a href="prime.css">prime.css</a></li>
-                                    <li><a
-                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">Font
-                                            File</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="desktop-link">JavaScript Code</a>
-                                <input type="checkbox" id="show-js">
-                                <label for="show-js">JavaScript Code</label>
-                                <ul>
-                                    <li><a href="chapter04.html">Chapter04.html</a></li>
-                                    <li><a href="ButtonMove.js">ButtonMove.js</a></li>
-                                    <li><a href="cards.js">cards.js</a></li>
-                                    <li><a href="prime.js">prime.js</a></li>
-                                    <li><a href="loops.js">loops.js</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="desktop-link">PHP Code</a>
-                                <input type="checkbox" id="show-php">
-                                <label for="show-php">PHP Code</label>
-                                <ul>
-                                    <li><a href="helloworld.php">Helloworld.php</a></li>
-                                    <li><a href="IO_app.php">PHP File I/O App</a></li>
-                                    <li><a href="seestore.php">seestore.php</a></li>
-                                    <li><a href="seestore_withJS.php">seestore_withJS.php</a></li>
-                                    <li><a href="showitem.php">showitem.php</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-                    <form action="#" class="search-box">
-                        <input type="text" placeholder="Type Something to Search..." required>
-                        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-                    </form>
-                </nav>
-            </div>
-            <!--END OF MENU-->
+            <div id="navbar"></div>
             <?php
             // Check if the user is logged in and if the username is set in the session
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['username'])) {
@@ -226,7 +135,7 @@ function getLoggedInUsername() {
                     <div class="navHead">
                         <h1><strong>Sections</strong></h1>
                         <hr>
-                        <li><a href="/420710/index.html">Home</a><br></li>
+                        <li><a href="/HTML/index.html">Home</a><br></li>
                         <li><a href="mailto:calove@g.clemson.edu">Email</a></li>
                     </div>
                 </ul>
@@ -236,16 +145,17 @@ function getLoggedInUsername() {
                 <ul>
                     <div class="navHead">
                         <p id="logged-in-user" style="display: none;"></p>
-                        <li id="logged-in-profile" style="display: none;"><a href="/phplogin/420710/PHP/home.php">Profile</a></li>
-                        <li id="log-out-link" style="display: none;"><a href="/phplogin/420710/PHP/logout.php">Log Out</a></li>
-                        <li id="register-link" style="display: none;"><a href="register.html">Register</a></li>
-                        <li id="login-link="><a href="login.html">Sign In</a></li>
+                        <li id="logged-in-profile" style="display: none;"><a href="/PHP/home.php">Profile</a></li>
+                        <li id="log-out-link" style="display: none;"><a href="/PHP/logout.php">Log
+                                Out</a></li>
+                        <li id="register-link" style="display: none;"><a href="/HTML/register.html">Register</a></li>
+                        <li id="login-link="><a href="/HTML/login.html">Sign In</a></li>
                         <li id="guest-welcome">Welcome, Guest</li>
                         <hr>
                         <h1><strong>Pages</strong></h1>
                         <hr>
-                        <li><a href="about.html">About API</a></li>
-                        <li><a href="stats.html">Pokemon Stats</a></li>
+                        <li><a href="/HTML/about.html">About API</a></li>
+                        <li><a href="/HTML/stats.html">Pokemon Stats</a></li>
                     </div>
                 </ul>
             </div>
@@ -255,9 +165,29 @@ function getLoggedInUsername() {
     <footer>
         <div id="footer">|Created by calove (7/15/2023)|</div>
     </footer>
-    <script src="/phplogin/420710/JS/statsScript.js"></script>
-    <script src="/phplogin/420710/JS/pokemonScript.js"></script>
+    <script src="/JS/statsScript.js"></script>
+    <script src="/JS/pokemonScript.js"></script>
     <script>
+        // Fetch the content of menu.html and insert it into the div with id "navbar"
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                // Create a temporary element to parse the fetched HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data;
+
+                // Find the menu div within the fetched content
+                const menuContent = tempDiv.querySelector('.menu');
+
+                // Insert the menu content into the header div if it exists
+                if (menuContent) {
+                    document.getElementById('navbar').appendChild(menuContent);
+                } else {
+                    console.error('Menu content not found in menu.html');
+                }
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+
         var loggedInUsername = null;
 
         // Function to capitalize the first letter of a string
@@ -278,7 +208,7 @@ function getLoggedInUsername() {
         async function getLoggedInUsername() {
             try {
                 // Make a fetch request to get the username from the server
-                const response = await fetch("/phplogin/420710/PHP/getUser.php");
+                const response = await fetch("/PHP/getUser.php");
                 const data = await response.json();
 
                 return data.username;
@@ -287,7 +217,7 @@ function getLoggedInUsername() {
                 return null;
             }
         }
-        
+
 
         async function updateHeader() {
             const loggedInUsername = await getLoggedInUsername();
@@ -309,7 +239,7 @@ function getLoggedInUsername() {
                 console.log(loggedInUsername);
                 console.log("logged in");
             }
-             else {
+            else {
                 loggedInUserElement.style.display = "none";
                 logOutLinkElement.style.display = "none";
                 loggedInProfileElement.style.display = "none";
