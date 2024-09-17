@@ -350,6 +350,9 @@ nav .menu_content .links {
 
 .menu_content .links .dropdown-container {
     padding: 5px 5px 5px 5px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /*************END OF MENU*******************/
